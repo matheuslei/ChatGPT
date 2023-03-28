@@ -1,13 +1,19 @@
 const inputQuestion = document.getElementById("inputQuestion");
 const result = document.getElementById("result");
 
+function ativarChat() {
+  let input = document.querySelector("#ativadorChat");
+  let OPENAI_API_KEY = input.value;
+  SendQuestion(OPENAI_API_KEY);
+}
+
 inputQuestion.addEventListener("keypress", (e) => {
-  if (inputQuestion.value && e.key === "Enter") SendQuestion();
+  if (inputQuestion.value && e.key === "Enter") ativarChat();
 });
 
-const OPENAI_API_KEY = "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";
+// const OPENAI_API_KEY = "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";
 
-function SendQuestion() {
+function SendQuestion(OPENAI_API_KEY) {
   var sQuestion = inputQuestion.value;
 
   fetch("https://api.openai.com/v1/completions", {
